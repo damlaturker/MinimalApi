@@ -15,8 +15,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -109,15 +107,7 @@ return _db.Products.Where(u => u.Name.Contains(req.ProductName)).Skip((req.Page 
 }
 return _db.Products.Skip((req.Page - 1) * req.PageSize).Take(req.PageSize);
 });
-
-
-
-
-
-
 app.Run();
-
-
 class ProductRequest
 {
     public string ProductName { get; set; }
